@@ -35,6 +35,7 @@ gem "quiet_assets", ">= 1.0.2", :group => :development
 gem "figaro", ">= 0.6.3"
 gem 'meta_request', :group => :development
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 gem "better_errors", ">= 0.7.2", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]

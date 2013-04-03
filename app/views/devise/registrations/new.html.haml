@@ -4,8 +4,7 @@
   = display_base_errors resource
   = f.input :name, :autofocus => true
   = f.input :email, :required => true
-  - if f.object.password_required?
-    = f.input :password, :required => true
-    = f.input :password_confirmation, :required => true
+  / - if f.object.password_required?
+  = f.input :password, :required => true
   = f.button :submit, 'Sign up', :class => 'btn-primary'
 = render "devise/shared/links"
