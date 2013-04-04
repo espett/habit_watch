@@ -1,6 +1,6 @@
 HabitWatch::Application.routes.draw do
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'habits#index'
   end
   root :to => "home#index"
   devise_for :users, controllers: {
@@ -14,5 +14,10 @@ HabitWatch::Application.routes.draw do
     delete '/logout' => 'devise/sessions#destroy', :as => 'logout'
     get '/settings' => 'devise/registrations#edit', :as => 'settings'
   end
+
+  resources :habits
+
+  get 'prototypes/watch' => 'prototypes#watch'
+  get 'prototypes/graph' => 'prototypes#graph'
 
 end

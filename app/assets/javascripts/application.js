@@ -16,3 +16,17 @@
 //= require_tree .
 
 $(document).foundation();
+
+$ (ev) ->
+  counts = []
+
+  $("#button").click (e) ->
+    counts.push (new Date()).valueOf()
+    $("#local").html "[" + counts.join(", ") + "]"
+
+  $("#sync").click (e) ->
+    ($.post "/counts", {'counts[]': counts}).done (data) ->
+      counts = []
+      $("#database").html "[" + data.join(", ") + "]"
+      $("#local").html "[" + counts.join(", ") + "]"
+
