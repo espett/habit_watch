@@ -3,8 +3,10 @@ HabitWatch::Application.routes.draw do
     root :to => 'home#index'
   end
   root :to => "home#index"
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
-  resources :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: "omniauth_callbacks",
+    registrations: 'registrations'
+  }
 
   devise_scope :user do
     get '/signup' => 'devise/registrations#new', :as => 'signup'
