@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20130404002341) do
 
   create_table "counts", :force => true do |t|
     t.integer  "habit_id"
+    t.integer  "time"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -22,10 +23,8 @@ ActiveRecord::Schema.define(:version => 20130404002341) do
   create_table "habits", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.text     "description"
-    t.string   "type_of_habit"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|
