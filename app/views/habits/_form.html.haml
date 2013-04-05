@@ -1,8 +1,7 @@
 = simple_form_for(@habit) do |f|
   = f.error_notification
-
-  .form-inputs
-    = f.text_field :name
-
-  .form-actions
-    = f.button :submit
+  = f.input :name
+  = f.input :description
+  = f.input :type
+  = f.input :goal
+  = f.submit 'Submit'
