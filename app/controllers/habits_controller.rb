@@ -7,6 +7,8 @@ class HabitsController < ApplicationController
 
   def show
     @habit = Habit.find(params[:id])
+    # count = Count.create!(habit_id: @habit.id)
+    # redirect_to habits_url
   end
 
   def new
@@ -43,6 +45,13 @@ class HabitsController < ApplicationController
     @habit = Habit.find(params[:id])
     @habit.destroy
     redirect_to habits_url
+  end
+
+  def add_count
+    @habit = Habit.find(params[:id])
+    count = Count.create!(habit_id: @habit.id)
+    redirect_to :back, :notice => 'Success'
+    # redirect_to habits_url
   end
 
 

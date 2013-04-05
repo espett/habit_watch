@@ -1,18 +1,21 @@
-%h1 Listing habits
+%h3 Your habits
 
-%table
-  %tr
-    %th
-    %th
-    %th
-
-  - @habits.each do |habit|
+-if @habits.any?
+  %table
     %tr
-      %td= "#{habit.name}"
-      %td= link_to 'Show', habit
-      %td= link_to 'Edit', edit_habit_path(habit)
-      %td= link_to 'Destroy', habit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Name
+      %th Count
+      %th
+      %th
+      - @habits.each do |habit|
+        %tr
+          %td= "#{habit.name}"
+          %td= "#{habit.counts.count}"
+          %td= link_to 'Show', habit
+          %td= link_to 'Edit', edit_habit_path(habit)
+          %td= link_to 'Count', add_count_path(habit)
+          %td= link_to 'Destroy', habit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+-else
+  %p You haven't added any habits yet.
 
-%br
-
-= link_to 'New Habit', new_habit_path
+= link_to 'Add Habit', new_habit_path, :class => 'button'

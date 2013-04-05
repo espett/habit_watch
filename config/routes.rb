@@ -13,9 +13,12 @@ HabitWatch::Application.routes.draw do
     get '/login' => 'devise/sessions#new', :as => 'login'
     delete '/logout' => 'devise/sessions#destroy', :as => 'logout'
     get '/settings' => 'devise/registrations#edit', :as => 'settings'
+
   end
 
   resources :habits
+  match '/habits/:id/count' => 'habits#add_count', :as => 'add_count'
+
 
   get 'prototypes/watch' => 'prototypes#watch'
   get 'prototypes/graph' => 'prototypes#graph'
