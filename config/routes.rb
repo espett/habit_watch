@@ -20,7 +20,4 @@ HabitWatch::Application.routes.draw do
   match '/habits/:id/count' => 'habits#add_count', :as => 'add_count'
 
 
-  get 'prototypes/watch' => 'prototypes#watch'
-  get 'prototypes/graph' => 'prototypes#graph'
-
 end

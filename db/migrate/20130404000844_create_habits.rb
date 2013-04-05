@@ -4,8 +4,7 @@ class CreateHabits < ActiveRecord::Migration
       t.references :user
       t.string :name
       t.text :description
-      t.string :type
-      t.integer :goal
+      t.string :type_of_habit
 
       t.timestamps
     end

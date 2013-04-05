@@ -23,7 +23,7 @@ class HabitsController < ApplicationController
     @habit = Habit.new(params[:habit])
 
     if @habit.save
-      redirect_to @habit, notice: 'Habit was successfully created.'
+      redirect_to habits_path, notice: 'Habit added successfully.'
     else
       render action: "new"
     end
@@ -34,7 +34,7 @@ class HabitsController < ApplicationController
     @habit = Habit.find(params[:id])
 
     if @habit.update_attributes(params[:habit])
-      redirect_to @habit, notice: 'Habit was successfully updated.'
+      redirect_to habits_path, notice: 'Habit updated successfully.'
     else
       render action: "edit"
     end
@@ -50,9 +50,7 @@ class HabitsController < ApplicationController
   def add_count
     @habit = Habit.find(params[:id])
     count = Count.create!(habit_id: @habit.id)
-    redirect_to :back, :notice => 'Success'
-    # redirect_to habits_url
+    redirect_to :back, notice: 'Activity recorded.'
   end
-
 
 end

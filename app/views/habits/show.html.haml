@@ -1,3 +1,17 @@
-%p#notice= notice
-= link_to 'Edit', edit_habit_path(@habit)
+%table
+  %tr
+    %th Name
+    %th Count
+    %th Description
+    %th Type
+  %tr
+    %td= @habit.name
+    %td= @habit.counts.count
+    %td= @habit.description
+    %td= @habit.type_of_habit
+
+
+= link_to 'Edit', edit_habit_path(@habit), class: 'button'
+= link_to 'Delete', @habit, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button'
+
 

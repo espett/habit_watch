@@ -5,16 +5,16 @@
     %tr
       %th Name
       %th Count
-      %th
+      %th Type
       %th
       - @habits.each do |habit|
         %tr
           %td= "#{habit.name}"
           %td= "#{habit.counts.count}"
-          %td= link_to 'Show', habit
+          %td= "#{habit.type_of_habit}"
+          %td= link_to 'Do It!', add_count_path(habit)
+          %td= link_to 'Details', habit
           %td= link_to 'Edit', edit_habit_path(habit)
-          %td= link_to 'Count', add_count_path(habit)
-          %td= link_to 'Destroy', habit, :method => :delete, :data => { :confirm => 'Are you sure?' }
 -else
   %p You haven't added any habits yet.
 
