@@ -4,11 +4,17 @@
     %th Count
     %th Description
     %th Type
+    %th 24 Hours
   %tr
     %td= @habit.name
     %td= @habit.counts.count
     %td= @habit.description
     %td= @habit.type_of_habit
+    %td= @habit.counts.where(:created_at => (DateTime.now.at_beginning_of_day.utc..Time.now.utc)).count
+    / %td= @habit.counts.where(:created_at => (Time.now - 1.day)).count
+    / %td= @habit.counts.where(:created_at => (Time.now - 2.week)).count
+    / Client.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight)
+
 
 
 = link_to 'Edit', edit_habit_path(@habit), class: 'button'
