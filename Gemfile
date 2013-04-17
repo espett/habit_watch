@@ -25,7 +25,6 @@ gem 'cucumber-rails', '>= 1.3.0', :group => :test, :require => false
 
 gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
 gem "compass-rails", ">= 1.0.3", :group => :assets
-gem "zurb-foundation", ">= 4.0.9", :group => :assets
 gem "hominid", ">= 3.0.5"
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.9"
@@ -37,6 +36,8 @@ gem 'meta_request', :group => :development
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'rails-footnotes', '>= 3.7.9', :group => :development
+
+gem 'bootstrap-sass'
 
 
 gem "better_errors", ">= 0.7.2", :group => :development
