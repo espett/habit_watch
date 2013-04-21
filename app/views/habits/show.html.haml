@@ -4,11 +4,20 @@
     %th Count
     %th Description
     %th Type
+    %th Today
+    %th Last 7 Days
+    %th Last Month
+    %th Last Year
+
   %tr
     %td= @habit.name
     %td= @habit.counts.count
     %td= @habit.description
     %td= @habit.type_of_habit
+    %td= @habit.counts.where(:created_at => (Time.now.at_beginning_of_day.utc..Time.now.utc)).count
+    %td= @habit.counts.where(:created_at => (7.days.ago.utc..Time.now.utc)).count
+    %td= @habit.counts.where(:created_at => (1.month.ago.utc..Time.now.utc)).count
+    %td= @habit.counts.where(:created_at => (1.year.ago.utc..Time.now.utc)).count
 
 
 = link_to 'Edit', edit_habit_path(@habit), class: 'button'
