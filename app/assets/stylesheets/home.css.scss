@@ -1,60 +1,40 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body .main-content{
+$ghost: #FAFAFA;
+body{
 	min-height: 600px;
 }
 
-$ghost: #FAFAFA;
+.container {
+	margin: 0 auto;
+	max-width: 1100px;
+}
+
+/* Custom navbar */
+.navbar{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.navbar-custom .navbar-inner {
+background-color: #1b1b1b;
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+border-left: none;
+border-right: none;
+}
+
+.navbar-custom .nav{
+width: 100%;
+}
+
 header{
 	background-color: $ghost;
 	border-bottom: 10px solid #B0E2FF;
 	margin-bottom: 10px;
 }
-.top-bar{
-	background-color: $ghost;
-	padding-top: 20px;
-	.name h1{
-		font-size: 1.5em;
-		a{
-			color: black;
-		}
-	}
-	a {
-		color: black;
-	}
-	.top-bar-section ul{
-		background-color: $ghost;
-	}
-	.top-bar-section li a:not(.button){
-		color: #4A4A4A;
-		background-color: #B0E2FF;
-	}
-	.top-bar-section li a:hover{
-		background-color: #fff;
-	}
-	.nav-buttons{
-		border: 2px solid #e5e5e5;
-		color: #f54786;
-		display: inline-block;
-		padding: .5em 1.4em;
-		text-transform: uppercase;
-	}
-}
-
-nav ul li{
-	margin-right: 10px;
-}
-
-hr.style-two {
-	border: 0;
-	height: 1px;
-	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-	background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-	background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-	background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-}
-
 footer{
 	margin-top: 10px;
 	background-color: $ghost;

@@ -8,15 +8,15 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
-  %body{:class => ".row #{controller_name} #{action_name}"}
-    %header
-      = render 'layouts/navigation'
+  %body{:class => "#{controller_name} #{action_name}"}
     .row
-      .large-12.columns
+      %header
+        = render 'layouts/navigation'
+      .container
         = render 'layouts/messages'
-    .row.main-content
-      .large-12.columns
+    .row
+      .container
         #main{:role => "main"}
           = yield
-    %footer
-      = render 'layouts/footer'
+      %footer
+        = render 'layouts/footer'

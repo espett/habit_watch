@@ -1,25 +1,19 @@
-.row.bg_topbar
-  %div.large-12.columns
-    %nav.top-bar
-      %ul.title-area
-        %li.name
-          %h1
-            = link_to "Habit Watch", root_path, :class => 'brand'
-        %li.toggle-topbar.menu-icon
-          %a{:href => '#'}
-            %span Menu
-      %section.top-bar-section
-        %ul.right
-          - if user_signed_in?
-            %li
-              = link_to 'Logout', logout_path, :method=>'delete', :class => 'nav-buttons'
-          - else
-            %li
-              = link_to 'Login', login_path, :class => 'nav-buttons'
-          - if user_signed_in?
-            %li
-              = link_to 'Settings', settings_path, :class => 'nav-buttons'
-          - else
-            %li.sign-up
-              = link_to 'Sign up', signup_path, :class => 'nav-buttons'
+.navbar.navbar-custom
+  .navbar-inner
+    .container
+      .brand
+        =link_to image_tag "logo.png"
+      %ul.nav
+        - if user_signed_in?
+          %li
+            = link_to 'Logout', logout_path, :method=>'delete', class: 'button small'
+        - else
+          %li
+            = link_to 'Login', login_path, class: 'button large'
+        - if user_signed_in?
+          %li
+            = link_to 'Settings', settings_path, class: 'button small'
+        - else
+          %li.sign-up
+            = link_to 'Sign up', signup_path, class: 'button small'
 
