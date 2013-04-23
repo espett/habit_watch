@@ -2,18 +2,18 @@
   .navbar-inner
     .container
       .brand
-        =link_to image_tag "logo.png"
-      %ul.nav
+        =link_to(image_tag("logo.png", :alt =>  "Habit Watch"), root_path) 
+      %ul
         - if user_signed_in?
           %li
-            = link_to 'Logout', logout_path, :method=>'delete', class: 'button small'
+            = link_to 'Logout', logout_path, :method=>'delete', class: 'btn btn-custom btn-small'
         - else
           %li
-            = link_to 'Login', login_path, class: 'button large'
+            = link_to 'Login', login_path, class: 'btn btn-custom btn-small'
         - if user_signed_in?
           %li
-            = link_to 'Settings', settings_path, class: 'button small'
+            = link_to 'Settings', settings_path, class: 'btn btn-custom btn-small'
         - else
           %li.sign-up
-            = link_to 'Sign up', signup_path, class: 'button small'
+            = link_to 'Sign up', signup_path, class: 'btn btn-custom btn-small'
 

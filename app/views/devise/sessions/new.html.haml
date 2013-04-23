@@ -1,9 +1,11 @@
-%div.row
-	%div.large-6.columns.large-offset-3
-		%h2 Sign in
-		= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-			= f.input :email, :autofocus => true
-			= f.input :password
-			= f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-			= f.button :submit, "Sign in", :class => 'button'
-		= render "devise/shared/links"
+.container
+  .row
+    .span12
+      .span6.offset5
+        %h2 Sign in
+        = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+          = f.input :email, :autofocus => true
+          = f.input :password
+          = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+          = f.button :submit, "Sign in", :class => 'button'
+        = render "devise/shared/links"

@@ -16,7 +16,6 @@
         = render 'layouts/messages'
     .row
       .container
-        #main{:role => "main"}
-          = yield
-      %footer
-        = render 'layouts/footer'
+        = yield
+    %footer
+      = render 'layouts/footer'
