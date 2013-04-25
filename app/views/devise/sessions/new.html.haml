@@ -1,11 +1,18 @@
-.container
-  .row
-    .span12
-      .span6.offset5
-        %h2 Sign in
-        = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-          = f.input :email, :autofocus => true
-          = f.input :password
-          = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-          = f.button :submit, "Sign in", :class => 'button'
-        = render "devise/shared/links"
+.row.sign
+  .span12
+    .container
+      .row
+        .span8
+          .header
+            %h2 Sign in
+    .container
+      .row
+        .span4.links
+          = render "devise/shared/social"
+        .span4.input
+          = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
+            = f.input :email, :autofocus => true
+            = f.input :password
+            = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+            = f.button :submit, "Sign in", :class => 'btn btn-custom btn-small'
+          = render "devise/shared/links"
