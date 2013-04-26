@@ -1,42 +1,37 @@
-%script(type="text/javascript")
+:javascript
   var g1, g2, g3;
 
   window.onload = function(){
-  var g1 = new JustGage({
-  id: "justgage_one", 
-  value: getRandomInt(0, 32), 
-  min: 0,
-  max: 100,
-  title: "Habit 1",
-  label: "Good",
-  levelColorsGradient: false
-  });
+    var g1 = new JustGage({
+      id: "justgage_one", 
+      value: $("#justgage_one").data("value"), 
+      min: 0,
+      max: 100,
+      title: "Habit 1",
+      label: "Good",
+      levelColorsGradient: false
+    });
 
-  var g2 = new JustGage({
-  id: "justgage_two", 
-  value: getRandomInt(34, 65),
-  min: 0,
-  max: 100,
-  title: "Habit 2",
-  label: "Neutral",
-  levelColorsGradient: false
-  });
+    var g2 = new JustGage({
+      id: "justgage_two", 
+      value: getRandomInt(34, 65),
+      min: 0,
+      max: 100,
+      title: "Habit 2",
+      label: "Neutral",
+      levelColorsGradient: false
+    });
 
-  var g3 = new JustGage({
-  id: "justgage_three", 
-  value: getRandomInt(66, 100), 
-  min: 0,
-  max: 100,
-  title: "Habit 3",
-  label: "Bad",
-  levelColorsGradient: false
-  });
+    var g3 = new JustGage({
+      id: "justgage_three", 
+      value: getRandomInt(66, 100), 
+      min: 0,
+      max: 100,
+      title: "Habit 3",
+      label: "Bad",
+      levelColorsGradient: false
+    });
 
-  setInterval(function() {
-  g1.refresh(getRandomInt(0, 32));
-  g2.refresh(getRandomInt(34, 65));          
-  g3.refresh(getRandomInt(66, 100));
-  }, 2500);
   };
 #gages
   .row
@@ -45,7 +40,7 @@
   .row
     .container
       .span3.gage_one
-        #justgage_one{:style => "width:300px;height:240px;padding: 0px;margin: 0px auto;"}
+        #justgage_one{"data-value" => @habits.first.counts.count, :style => "width:300px;height:240px;padding: 0px;margin: 0px auto;"}
         .row
           .span3
             -if @habits.any?
@@ -107,3 +102,12 @@
                       %td= link_to 'Edit', edit_habit_path(habit)
             -else
               %p You haven't added any habits yet.
+:javascript
+  $(document).ready(function() {
+    $("#justgage_one td a").on('click', function(event) {
+      $.post(#{add_count_path(@habits.first)}, function(data) {
+        g1.refresh(data.value)
+      })
+      event.preventDefault()
+    })
+  })
