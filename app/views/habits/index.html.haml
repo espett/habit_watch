@@ -1,21 +1,109 @@
-%h3 Your habits
+%script(type="text/javascript")
+  var g1, g2, g3;
 
--if @habits.any?
-  %table
-    %tr
-      %th Name
-      %th Count
-      %th Type
-      %th
-      - @habits.each do |habit|
-        %tr
-          %td= "#{habit.name}"
-          %td= "#{habit.counts.count}"
-          %td= "#{habit.type_of_habit}"
-          %td= link_to 'Do It!', add_count_path(habit)
-          %td= link_to 'Details', habit
-          %td= link_to 'Edit', edit_habit_path(habit)
--else
-  %p You haven't added any habits yet.
+  window.onload = function(){
+  var g1 = new JustGage({
+  id: "justgage_one", 
+  value: getRandomInt(0, 32), 
+  min: 0,
+  max: 100,
+  title: "Habit 1",
+  label: "Good",
+  levelColorsGradient: false
+  });
 
-= link_to 'Add a Habit', new_habit_path, :class => 'button'
+  var g2 = new JustGage({
+  id: "justgage_two", 
+  value: getRandomInt(34, 65),
+  min: 0,
+  max: 100,
+  title: "Habit 2",
+  label: "Neutral",
+  levelColorsGradient: false
+  });
+
+  var g3 = new JustGage({
+  id: "justgage_three", 
+  value: getRandomInt(66, 100), 
+  min: 0,
+  max: 100,
+  title: "Habit 3",
+  label: "Bad",
+  levelColorsGradient: false
+  });
+
+  setInterval(function() {
+  g1.refresh(getRandomInt(0, 32));
+  g2.refresh(getRandomInt(34, 65));          
+  g3.refresh(getRandomInt(66, 100));
+  }, 2500);
+  };
+#gages
+  .row
+    .right
+      = link_to 'Add a Habit', new_habit_path, :class => 'btn btn-inverse'
+  .row
+    .container
+      .span3.gage_one
+        #justgage_one{:style => "width:300px;height:240px;padding: 0px;margin: 0px auto;"}
+        .row
+          .span3
+            -if @habits.any?
+              %table.table.table-bordered.table-striped.table-condensed.center
+                %tr
+                  %th Name
+                  %th Count
+                  %th Type
+                  %th
+                  - @habits.each do |habit|
+                    %tr
+                      %td= "#{habit.name}"
+                      %td= "#{habit.counts.count}"
+                      %td= "#{habit.type_of_habit}"
+                      %td= link_to '+', add_count_path(habit), :class => 'btn btn-success'
+                      %td= link_to 'Details', habit
+                      %td= link_to 'Edit', edit_habit_path(habit)
+            -else
+              %p You haven't added any habits yet.
+      .span3.gage_two
+        #justgage_two{:style => "width:300px;height:240px;padding: 0px;margin: 0px auto;"}
+        .row
+          .span3
+            -if @habits.any?
+              %table.table.table-bordered.table-striped.table-condensed.center
+                %tr
+                  %th Name
+                  %th Count
+                  %th Type
+                  %th
+                  - @habits.each do |habit|
+                    %tr
+                      %td= "#{habit.name}"
+                      %td= "#{habit.counts.count}"
+                      %td= "#{habit.type_of_habit}"
+                      %td= link_to '+', add_count_path(habit), :class => 'btn btn-success'
+                      %td= link_to 'Details', habit
+                      %td= link_to 'Edit', edit_habit_path(habit)
+            -else
+              %p You haven't added any habits yet.
+      .span3.gage_three
+        #justgage_three{:style => "width:300px;height:240px;padding: 0px;margin: 0px auto;"}
+        .row
+          .span3
+            -if @habits.any?
+              %table.table.table-bordered.table-striped.table-condensed.center
+                %tr
+                  %th Name
+                  %th Count
+                  %th Type
+                  %th
+                  - @habits.each do |habit|
+                    %tr
+                      %td= "#{habit.name}"
+                      %td= "#{habit.counts.count}"
+                      %td= "#{habit.type_of_habit}"
+                      %td= link_to '+', add_count_path(habit), :class => 'btn btn-success'
+                      %td= link_to 'Details', habit
+                      %td= link_to 'Edit', edit_habit_path(habit)
+            -else
+              %p You haven't added any habits yet.

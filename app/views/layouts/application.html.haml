@@ -4,6 +4,8 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Habit Watch"
       %meta{:content => content_for?(:description) ? yield(:description) : "Habit Watch", :name => "description"}
+        = javascript_include_tag 'justgage.1.0.1.min.js'
+        = javascript_include_tag 'raphael-min.js'
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags

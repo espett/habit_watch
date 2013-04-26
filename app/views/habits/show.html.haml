@@ -1,28 +1,27 @@
 .span12
-  .span6
-    %table
-      %tr
-        %th Name
-        %th Count
-        %th Description
-        %th Type
-        %th Today
-        %th Last 7 Days
-        %th Last Month
-        %th Last Year
+%table.table.table-bordered.table-striped
+  %tr
+    %th Name
+    %th Count
+    %th Description
+    %th Type
+    %th Today
+    %th Last 7 Days
+    %th Last Month
+    %th Last Year
 
-      %tr
-        %td= @habit.name
-        %td= @habit.counts.count
-        %td= @habit.description
-        %td= @habit.type_of_habit
-        %td= @habit.counts.where(:created_at => (Time.now.at_beginning_of_day.utc..Time.now.utc)).count
-        %td= @habit.counts.where(:created_at => (7.days.ago.utc..Time.now.utc)).count
-        %td= @habit.counts.where(:created_at => (1.month.ago.utc..Time.now.utc)).count
-        %td= @habit.counts.where(:created_at => (1.year.ago.utc..Time.now.utc)).count
+  %tr
+    %td= @habit.name
+    %td= @habit.counts.count
+    %td= @habit.description
+    %td= @habit.type_of_habit
+    %td= @habit.counts.where(:created_at => (Time.now.at_beginning_of_day.utc..Time.now.utc)).count
+    %td= @habit.counts.where(:created_at => (7.days.ago.utc..Time.now.utc)).count
+    %td= @habit.counts.where(:created_at => (1.month.ago.utc..Time.now.utc)).count
+    %td= @habit.counts.where(:created_at => (1.year.ago.utc..Time.now.utc)).count
 
 
-    = link_to 'Edit', edit_habit_path(@habit), class: 'button'
-    = link_to 'Delete', @habit, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button'
+= link_to 'Edit', edit_habit_path(@habit), class: 'btn btn-info'
+= link_to 'Delete', @habit, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger'
 
 
